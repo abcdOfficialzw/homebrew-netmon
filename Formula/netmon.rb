@@ -16,12 +16,15 @@ class Netmon < Formula
     # Set up Go environment
     ENV["GO111MODULE"] = "on"
 
-    # For HEAD builds, the repo is cloned directly into buildpath
     # Build netmon-service
-    system "go", "build", "-o", bin/"netmon-service", "./cmd/netmon-service"
+    system "go", "build", "-o", "netmon-service", "./cmd/netmon-service"
 
     # Build netmon CLI
-    system "go", "build", "-o", bin/"netmon", "./cmd/netmon"
+    system "go", "build", "-o", "netmon", "./cmd/netmon"
+
+    # Install binaries
+    bin.install "netmon-service"
+    bin.install "netmon"
   end
 
   test do
