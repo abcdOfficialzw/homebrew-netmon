@@ -13,19 +13,14 @@ class Netmon < Formula
 
   def install
     # Set up Go environment
-    ENV["GOPATH"] = buildpath
     ENV["GO111MODULE"] = "on"
 
-    # Create directory structure
-    (buildpath/"src/netmon").install buildpath.children - [buildpath/".brew_home"]
+    # For HEAD builds, the repo is cloned directly into buildpath
+    # Build netmon-service
+    system "go", "build", "-o", bin/"netmon-service", "./cmd/netmon-service"
 
-    cd "src/netmon" do
-      # Build netmon-service
-      system "go", "build", "-o", bin/"netmon-service", "./cmd/netmon-service"
-
-      # Build netmon CLI
-      system "go", "build", "-o", bin/"netmon", "./cmd/netmon"
-    end
+    # Build netmon CLI
+    system "go", "build", "-o", bin/"netmon", "./cmd/netmon"
   end
 
   test do
