@@ -6,25 +6,29 @@
 class Netmon < Formula
   desc "macOS Network Usage Monitor - Track network usage by interface and application"
   homepage "https://github.com/abcdOfficialzw/netmon"
-  url "https://github.com/abcdOfficialzw/netmon.git", branch: "main"
-  version "HEAD"
+  url "https://github.com/abcdOfficialzw/netmon/archive/refs/heads/main.tar.gz"
+  version "0.2.0"
+  sha256 "c5662c8102fd6324c9522eae197498abf0642156245392cc133da60ebe4f9d5f"
   license "MIT"
+  head "https://github.com/abcdOfficialzw/netmon.git", branch: "main"
 
   depends_on "go" => :build
 
   def install
     # Set up Go environment
+    ENV["GOPATH"] = buildpath
     ENV["GO111MODULE"] = "on"
 
-    # Build netmon-service
-    system "go", "build", "-o", "netmon-service", "./cmd/netmon-service"
+    # Create directory structure
+    (buildpath/"src/netmon").install buildpath.children - [buildpath/".brew_home"]
 
-    # Build netmon CLI
-    system "go", "build", "-o", "netmon", "./cmd/netmon"
+    cd "src/netmon" do
+      # Build netmon-service
+      system "go", "build", "-o", bin/"netmon-service", "./cmd/netmon-service"
 
-    # Install binaries
-    bin.install "netmon-service"
-    bin.install "netmon"
+      # Build netmon CLI
+      system "go", "build", "-o", bin/"netmon", "./cmd/netmon"
+    end
   end
 
   test do
