@@ -6,8 +6,9 @@
 class Netmon < Formula
   desc "macOS Network Usage Monitor - Track network usage by interface and application"
   homepage "https://github.com/abcdOfficialzw/netmon"
+  url "https://github.com/abcdOfficialzw/netmon.git", branch: "main"
+  version "HEAD"
   license "MIT"
-  head "https://github.com/abcdOfficialzw/netmon.git", branch: "main"
 
   depends_on "go" => :build
 
