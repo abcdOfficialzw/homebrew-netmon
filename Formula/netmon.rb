@@ -8,7 +8,7 @@ class Netmon < Formula
   homepage "https://github.com/abcdOfficialzw/netmon"
   url "https://github.com/abcdOfficialzw/netmon/archive/refs/tags/v0.5.0.tar.gz"
   version "0.5.0"
-  sha256 "cd2681b1662ec58edfd7f05717a2710d271d12dd63168722f75e42e65dc5240c"
+  sha256 "6ed2f551c572d0c4d6bd9d35ed553685b07d5e9495f14be79f14524f5252b914"
   license "MIT"
   head "https://github.com/abcdOfficialzw/netmon.git", branch: "main"
 
