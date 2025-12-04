@@ -6,7 +6,7 @@
 class Netmon < Formula
   desc "macOS Network Usage Monitor - Track network usage by interface and application"
   homepage "https://github.com/abcdOfficialzw/netmon"
-  url "https://github.com/abcdOfficialzw/netmon/archive/refs/tags/v0.5.0.tar.gz
+  url "https://github.com/abcdOfficialzw/netmon/archive/refs/tags/v0.5.0.tar.gz"
   version "0.5.0"
   sha256 "cd2681b1662ec58edfd7f05717a2710d271d12dd63168722f75e42e65dc5240c"
   license "MIT"
